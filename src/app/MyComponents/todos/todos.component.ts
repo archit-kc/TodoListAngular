@@ -9,29 +9,19 @@ import { Todo } from '../../Todo';
 export class TodosComponent implements OnInit {
   todos : Todo[];
   constructor() {
-    this.todos = [
-      {
-        sno : 1,
-        title : 'This is first todo',
-        desc : 'This is description',
-        active : true,
-      },
-      {
-        sno : 2,
-        title : 'This is second todo',
-        desc : 'This is description',
-        active : true,
-      },
-      {
-        sno : 3,
-        title : 'This is third todo',
-        desc : 'This is description',
-        active : true,
-      },
-    ]
+    this.todos = []
    }
 
   ngOnInit(): void {
+  }
+
+  deleteTodo(todo : Todo){
+    let indexofTodo = this.todos.indexOf(todo);
+    this.todos.splice(indexofTodo, 1);
+  }
+
+  addTodo(todo: Todo){
+    this.todos.push(todo);
   }
 
 }
