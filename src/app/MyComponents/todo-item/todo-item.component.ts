@@ -8,8 +8,11 @@ import { Todo } from 'src/app/Todo';
 })
 export class TodoItemComponent implements OnInit {
   @Input()
+  i!: number;
+  @Input()
   todo: Todo = new Todo;
   @Output() todoDelete: EventEmitter<Todo> = new EventEmitter();
+  @Output() toggleActive: EventEmitter<Todo> = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
@@ -18,6 +21,10 @@ export class TodoItemComponent implements OnInit {
   onClick(todo : Todo){
     this.todoDelete.emit(todo);
     console.log("Todo has been deleted!!!")
+  }
+
+  onToggleDone(todo : Todo){
+    this.toggleActive.emit(todo);
   }
 
 }
